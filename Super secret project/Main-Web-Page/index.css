@@ -80,3 +80,61 @@ p {
 	border-radius: 10px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* === Animations & Hover Effects for Homepage === */
+
+/* Fade-in animation for content */
+main section {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effect on nav links */
+nav a {
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-weight: bold;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Image hover (slight zoom) */
+.about-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  border: 3px solid var(--duck-yellow);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+/* Text hover (like wiggling a little) */
+p:hover {
+  animation: wiggle 0.5s ease;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1.5deg); }
+  75% { transform: rotate(-1.5deg); }
+}

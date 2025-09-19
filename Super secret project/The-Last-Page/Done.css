@@ -1,0 +1,59 @@
+:root {
+  --duck-yellow: #FFD700;
+  --pond-blue: #87CEEB;
+  --dark-blue: #1E3A5F;
+  --white: #ffffff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--pond-blue);
+  margin: 0;
+  overflow: hidden; /* hide overflow so ducks don’t scrollbars */
+}
+
+/* Flying ducks */
+.duck {
+  position: absolute;
+  font-size: 2rem;
+  pointer-events: none;
+  animation: fly linear forwards;
+}
+
+/* Main message */
+.done-container {
+  position: relative;
+  z-index: 10; /* above ducks */
+  text-align: center;
+  background: var(--white);
+  padding: 40px;
+  border-radius: 12px;
+  border: 3px solid var(--duck-yellow);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  max-width: 400px;
+  margin: 15% auto;
+}
+
+.done-container h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--dark-blue);
+}
+
+.done-container p {
+  font-size: 1.2rem;
+  color: var(--dark-blue);
+}
+
+/* Keyframes for flying ducks */
+@keyframes fly {
+  from {
+    transform: translateX(-100px) translateY(var(--startY));
+    opacity: 1;
+  }
+  to {
+    transform: translateX(110vw) translateY(var(--endY));
+    opacity: 0.7;
+  }
+}
+

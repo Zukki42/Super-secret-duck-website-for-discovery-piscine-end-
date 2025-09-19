@@ -1,189 +1,287 @@
 /* === Invest Page Styles === */
 :root {
-	--duck-yellow: #FFD700;
-	--pond-blue: #87CEEB;
-	--dark-blue: #1E3A5F;
-	--white: #ffffff;
+  --duck-yellow: #FFD700;
+  --pond-blue: #87CEEB;
+  --dark-blue: #1E3A5F;
+  --white: #ffffff;
 }
 
 /* Reset */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	background-color: var(--pond-blue);
-	color: var(--dark-blue);
-	line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--pond-blue);
+  color: var(--dark-blue);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Header + Navigation */
 header {
-	background: var(--duck-yellow);
-	padding: 15px 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  background: var(--duck-yellow);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header .logo {
-	font-weight: bold;
-	font-size: 1.3rem;
-	color: var(--dark-blue);
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--dark-blue);
 }
 
 nav ul {
-	list-style: none;
-	display: flex;
-	gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
-	text-decoration: none;
-	color: var(--dark-blue);
-	font-weight: bold;
-	transition: color 0.3s;
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-weight: bold;
+  transition: color 0.3s, transform 0.2s;
 }
 
 nav a:hover,
 nav a.active {
-	color: var(--white);
+  color: var(--white);
+  transform: translateY(-2px);
 }
 
-/* Main Content */
+/* Main Content Animations */
 main {
-	padding: 30px;
-	max-width: 1000px;
-	margin: auto;
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Bio Section */
 .bio-section h1 {
-	text-align: center;
-	margin-bottom: 30px;
-	color: var(--dark-blue);
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--dark-blue);
 }
 
 .bio-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .bio-card {
-	background: var(--white);
-	border: 2px solid var(--duck-yellow);
-	border-radius: 12px;
-	padding: 20px;
-	text-align: center;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: var(--white);
+  border: 2px solid var(--duck-yellow);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.bio-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3),
+              0 0 12px rgba(255, 215, 0, 0.4);
 }
 
 .bio-photo {
-	width: 120px;
-	height: 120px;
-	border-radius: 50%;
-	background: var(--duck-yellow);
-	margin: 0 auto 15px;
-	border: 4px solid var(--dark-blue);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--duck-yellow);
+  margin: 0 auto 15px;
+  border: 4px solid var(--dark-blue);
+  transition: box-shadow 0.3s;
+}
+
+.bio-card:hover .bio-photo {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
 .bio-card h2 {
-	margin-bottom: 10px;
-	font-size: 1.3rem;
-	color: var(--dark-blue);
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: var(--dark-blue);
 }
 
 .bio-card p {
-	font-size: 1rem;
-	line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 /* Donation Section */
 .donation-section {
-	margin-top: 50px;
-	text-align: center;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .donation-section h1 {
-	margin-bottom: 20px;
-	color: var(--dark-blue);
+  margin-bottom: 20px;
+  color: var(--dark-blue);
 }
 
 .donation-section ul {
-	list-style: none;
-	padding: 0;
-	font-size: 1.1rem;
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
 }
 
 .donation-section li {
-	background: var(--white);
-	border: 2px solid var(--duck-yellow);
-	border-radius: 8px;
-	margin: 10px auto;
-	padding: 12px;
-	max-width: 500px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: var(--white);
+  border: 2px solid var(--duck-yellow);
+  border-radius: 8px;
+  margin: 10px auto;
+  padding: 12px;
+  max-width: 500px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.3s;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.donation-section li:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25),
+              0 0 8px rgba(255, 215, 0, 0.4);
 }
 
 /* Modal */
 .donation-modal {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.6);
-	justify-content: center;
-	align-items: center;
-	z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .donation-modal.show {
-	display: flex;
+  display: flex;
 }
 
 .modal-content {
-	background: var(--white);
-	padding: 30px;
-	border-radius: 12px;
-	text-align: center;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-	max-width: 400px;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-width: 400px;
+  animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
 .modal-content h2 {
-	margin-bottom: 10px;
-	color: var(--dark-blue);
+  margin-bottom: 10px;
+  color: var(--dark-blue);
 }
 
 .modal-content p {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-content button {
-	background: var(--duck-yellow);
-	border: none;
-	padding: 10px 20px;
-	font-weight: bold;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: background 0.3s;
+  background: var(--duck-yellow);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .modal-content button:hover {
-	background: #e6c200;
+  background: #e6c200;
 }
 
 /* Confetti */
 .confetti {
-	position: fixed;
-	top: 0;
-	z-index: 2000;
-	border-radius: 50%;
-	pointer-events: none;
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Outro text */
+.invest-outro {
+  margin-top: 40px;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--dark-blue);
+  text-align: center;
+}
+
+.bio-photo.dev1 {
+  background-image: url('../Images/Eddie.jpg'); /* Replace with your filename */
+  background-size: cover;
+  background-position: center;
+}
+
+.bio-photo.dev2 {
+  background-image: url('../Images/Vikky.jpg'); /* Replace with your filename */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Done button */
+.done-button-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#doneBtn {
+  background: var(--duck-yellow);
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#doneBtn:hover {
+  background: #e6c200;
+  transform: scale(1.05);
 }

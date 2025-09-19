@@ -4,26 +4,26 @@ console.log("🦆 Welcome to the Duckbronn team page!");
 // Select the grid container
 const teamGrid = document.querySelector(".team-grid");
 
-// Define 9 ducks with front + back placeholders
+// Define your ducks (folder corrected to "Images/")
 const ducks = [
-	{ name: "Testestest", role: "The Debugging Duck of mighty 54 style", photoFront: "img/front1.jpg", photoBack: "img/back1.jpg" },
-	{ name: "Duck 2", role: "The Mallard of Memory Leaks", photoFront: "img/front2.jpg", photoBack: "img/back2.jpg" },
-	{ name: "Duck 3", role: "The Rubber Duck Mentor", photoFront: "img/front3.jpg", photoBack: "img/back3.jpg" },
-	{ name: "Duck 4", role: "The Goose Intern (don’t ask)", photoFront: "img/front4.jpg", photoBack: "img/back4.jpg" },
-	{ name: "Duck 5", role: "The Duck of Documentation", photoFront: "img/front5.jpg", photoBack: "img/back5.jpg" },
-	{ name: "Duck 6", role: "The Feathered Frontend Dev", photoFront: "img/front6.jpg", photoBack: "img/back6.jpg" },
-	{ name: "Duck 7", role: "The Beakend Engineer", photoFront: "img/front7.jpg", photoBack: "img/back7.jpg" },
-	{ name: "Duck 8", role: "The Pond Project Manager", photoFront: "img/front8.jpg", photoBack: "img/back8.jpg" },
-	{ name: "Duck 92", role: "The Legendary QuackOps Specialist", photoFront: "img/front91.jpg", photoBack: "img/back944.jpg" },
-	{ name: "Duck 91", role: "The Legendary QuackOps Specialist", photoFront: "img/front955.jpg", photoBack: "img/back9222.jpg" },
-	{ name: "Duck 95", role: "The Legendary QuackOps Specialist", photoFront: "img/front92.jpg", photoBack: "img/back911.jpg" },
+  { name: "Moritz", role: "The Boss Duck", photoFront: "../Images/placeholder.png", photoBack: "../Images/Moritz.png" },
+  { name: "Max", role: "The Learning Duck", photoFront: "../Images/front2.jpg", photoBack: "../Images/Max.png" },
+  { name: "Markus", role: "The Infrastructure Duck", photoFront: "../Images/front3.jpg", photoBack: "../Images/Markus.png" },
+  { name: "Ines", role: "The Admin Duck", photoFront: "../Images/front4.jpg", photoBack: "../Images/Ines.png" },
+  { name: "Steve", role: "The Event Planner Duck", photoFront: "../Images/front5.jpg", photoBack: "../Images/Steve.png" },
+  { name: "Lisa", role: "The Admission Duck (Allegedly)", photoFront: "../Images/front6.jpg", photoBack: "../Images/Lisa.png" },
+  { name: "Tom", role: "The Chillest Operations Duck", photoFront: "../Images/front7.jpg", photoBack: "../Images/Tom.png" },
+  { name: "Jonas", role: "The Hacker Duck", photoFront: "../Images/front8.jpg", photoBack: "../Images/Jonas.png" },
+  { name: "Carolin", role: "The Marketing Duck", photoFront: "../Images/front9.jpg", photoBack: "../Images/Carolin.png" },
+  { name: "Theo", role: "The 'Project Management Duck' (Sure buddy)", photoFront: "../Images/front9.jpg", photoBack: "../Images/Theo.png" },
+  { name: "Robin", role: "The Partnership Duck", photoFront: "../Images/front9.jpg", photoBack: "../Images/Robin.png" }
 ];
 
-// Generate the cards
+// Generate cards dynamically
 ducks.forEach(duck => {
-	const card = document.createElement("div");
-	card.classList.add("team-card");
-	card.innerHTML = `
+  const card = document.createElement("div");
+  card.classList.add("team-card");
+  card.innerHTML = `
     <div class="card-inner">
       <div class="card-front">
         <div class="card-photo" style="background-image: url('${duck.photoFront}');"></div>
@@ -37,10 +37,29 @@ ducks.forEach(duck => {
       </div>
     </div>
   `;
-	teamGrid.appendChild(card);
+  teamGrid.appendChild(card);
 
-	// Flip card on click
-	card.addEventListener("click", () => {
-		card.classList.toggle("flipped");
-	});
+  // Flip card on click
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
+
+  // Sprinkle confetti on hover
+  card.addEventListener("mouseenter", () => {
+    sprinkleConfetti(card);
+  });
 });
+
+// Mini confetti function
+function sprinkleConfetti(card) {
+  for (let i = 0; i < 8; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("mini-confetti");
+    card.appendChild(confetti);
+
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.top = `${Math.random() * 100}%`;
+
+    setTimeout(() => confetti.remove(), 2000);
+  }
+}
